@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Hand Calculator</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Tensorflow -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown" id="countdown">
+        3
+    </div>
+
+    <div class="container">
+
+        <h1>AI HAND CALCULATOR</h1>
+
+        <p class="subtitle">
+            Gesture Based Math Calculator
+        </p>
+
+        <div class="main-box">
+
+            <!-- CAMERA -->
+            <div class="camera-box">
+
+                <div id="webcam-container"></div>
+
+                <div class="gesture" id="gestureText">
+                    Waiting...
+                </div>
+
+            </div>
+
+            <!-- RESULT -->
+            <div class="info-box">
+
+                <div class="title-small">
+                    Expression
+                </div>
+
+                <div class="expression" id="expression"></div>
+
+                <div class="title-small">
+                    Result
+                </div>
+
+                <div class="result" id="result"></div>
+
+            </div>
+
+        </div>
+
+        <button class="start-btn" onclick="startSystem()">
+            START
+        </button>
+
+    </div>
+
+    <!-- JS -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
