@@ -6,7 +6,7 @@ let webcam;
 
 let expression = [];
 let cooldown = false;
-
+let isRunning = false;
 
 // START SYSTEM
 async function startSystem(){
@@ -26,15 +26,20 @@ async function startSystem(){
             setTimeout(resolve,1000)
         );
     }
-
     countdown.style.display = "none";
-
-    init();
+    // CEGAH DOUBLE START
+    if(isRunning){
+    return;
 }
-
+isRunning = true;
+init();
+}
 
 // INIT
 async function init(){
+    // HAPUS WEBCAM LAMA
+    document.getElementById("webcam-container")
+    .innerHTML = "";
 
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
@@ -58,14 +63,15 @@ async function init(){
 
 // LOOP
 async function loop(){
-
+    
+    // STOP LOOP JIKA SYSTEM OFF
+    if(!isRunning){
+        return;
+    }
     webcam.update();
-
     await predict();
-
     window.requestAnimationFrame(loop);
 }
-
 
 // PREDICT
 async function predict(){
@@ -196,4 +202,34 @@ function processGesture(gesture){
 
         },5000);
     }
+}
+
+// STOP SYSTEM
+function stopSystem(){
+
+    isRunning = false;
+
+    // STOP CAMERA
+    if(webcam){
+        webcam.stop();
+    }
+
+    // HAPUS WEBCAM
+    document.getElementById("webcam-container")
+        .innerHTML = "";
+
+    // RESET UI
+    document.getElementById("gestureText")
+        .innerHTML = "Projek Selesasi";
+
+    document.getElementById("expression")
+        .innerHTML = "";
+
+    document.getElementById("result")
+        .innerHTML = "";
+
+    // RESET DATA
+    expression = [];
+
+    cooldown = false;
 }
