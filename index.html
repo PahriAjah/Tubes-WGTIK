@@ -1,83 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>AI Hand Calculator</title>
-
-    <!-- CSS -->
+    <!-- Modern Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>AI Hand Calculator</h1>
+            <p>Kalkulator Berbasis Gesture Tangan</p>
+        </header>
 
-    <!-- Tensorflow -->
+        <div class="main-content">
+            <!-- Left Side: Webcam -->
+            <div class="webcam-section glass-panel glow-effect">
+                <div id="webcam-container">
+                    <div id="countdown-overlay" class="hidden">
+                        <span id="countdown-text">3</span>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button id="btn-start" onclick="startSystem()">START</button>
+                    <button id="btn-stop" onclick="stopSystem()" disabled>STOP / EXIT</button>
+                </div>
+            </div>
+
+            <!-- Right Side: Calculations -->
+            <div class="calc-section glass-panel glow-effect">
+                <div class="status-box">
+                    <h3>Deteksi Gesture:</h3>
+                    <div id="gestureText">Menunggu...</div>
+                </div>
+                
+                <div class="status-box">
+                    <h3>Ekspresi Matematika:</h3>
+                    <div id="expression">Kosong</div>
+                </div>
+
+                <div class="status-box result-box">
+                    <h3>Hasil Kalkulasi:</h3>
+                    <div id="result">-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TensorFlow.js and Teachable Machine Image Model -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-
-</head>
-
-<body>
-
-    <!-- COUNTDOWN -->
-    <div class="countdown" id="countdown">
-        3
-    </div>
-
-    <div class="container">
-
-        <h1>AI HAND CALCULATOR</h1>
-
-        <p class="subtitle">
-            Gesture Based Math Calculator
-        </p>
-
-        <div class="main-box">
-
-            <!-- CAMERA -->
-            <div class="camera-box">
-
-                <div id="webcam-container"></div>
-
-                <div class="gesture" id="gestureText">
-                    Waiting...
-                </div>
-
-            </div>
-
-            <!-- RESULT -->
-            <div class="info-box">
-
-                <div class="title-small">
-                    Expression
-                </div>
-
-                <div class="expression" id="expression"></div>
-
-                <div class="title-small">
-                    Result
-                </div>
-
-                <div class="result" id="result"></div>
-
-            </div>
-
-        </div>
-        
-        <div class="button-group">
-
-    <button class="start-btn" onclick="startSystem()">
-        START
-    </button>
-    <button class="exit-btn" onclick="stopSystem()">
-        EXIT
-    </button>
-</div>
-
-    </div>
-
-    <!-- JS -->
     <script src="js/script.js"></script>
-
 </body>
 </html>
