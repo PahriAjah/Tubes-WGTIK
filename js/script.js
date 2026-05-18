@@ -1,9 +1,7 @@
-// MODEL URL
 const URL = "https://teachablemachine.withgoogle.com/models/ibfsXeWdT/";
 
 let model;
 let webcam;
-
 let expression = [];
 let cooldown = false;
 let isRunning = false;
@@ -206,7 +204,6 @@ function processGesture(gesture){
 
 // STOP SYSTEM
 function stopSystem(){
-
     isRunning = false;
 
     // STOP CAMERA
